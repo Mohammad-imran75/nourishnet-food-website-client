@@ -1,4 +1,6 @@
-import { FaDeleteLeft } from "react-icons/fa6";
+import { AiFillDelete } from "react-icons/ai";
+import { Link } from "react-router-dom";
+
 
 const SingleFood = ({ food,index,handleDelete}) => {
   const {_id, food_photo, food_name, pickup_location,expired_date,} = food;
@@ -21,19 +23,20 @@ const SingleFood = ({ food,index,handleDelete}) => {
       <td>{expired_date}</td>
       <td>{pickup_location}</td>
       <th>
+      <Link to={`/update/${_id}`}>
       <button
-            onClick={() => handaleupdate(_id)}
             className="btn btn-secondary text-white bg-[#FF3811]"
           >
             Update
           </button>
+      </Link>
       </th>
       <th>
       <button
             onClick={() => handleDelete(_id)}
             className="btn btn-secondary text-white bg-[#FF3811]"
           >
-            <FaDeleteLeft></FaDeleteLeft>
+           <AiFillDelete className="text-3xl" />
           </button>
       </th>
     </tr>

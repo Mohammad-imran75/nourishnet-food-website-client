@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import {  NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const location = useLocation();
+
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState([]);
   console.log(currentUser);
