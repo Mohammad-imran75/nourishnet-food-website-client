@@ -1,61 +1,64 @@
-
-
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const AddFood = () => {
-    const formRef = useRef(null);
-    const handleAddedFood=e=>{
-        e.preventDefault()
-        const form = new FormData(e.currentTarget);
-        const photo = form.get('photo')
-        const coutryName = form.get('coutryName')
-        const location = form.get('location')
-        const description = form.get('description')
-        const cost = form.get('cost')
-        const seasonality = form.get('seasonality')
-        const traveltime = form.get('traveltime')
-        const totalVisitor = form.get('totalVisitor')
-        const email = form.get('email')
-        const name = form.get('name')
-        const touristSpot = form.get('touristSpot')
-        const visitor = {touristSpot,name,email,totalVisitor,traveltime,seasonality,cost,description,location,coutryName,photo};
-        fetch("http://localhost:5000/foodsitem",{
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
-            },
-            body:JSON.stringify(visitor)
-        }).then(res=>res.json())
-        .then(data => {
-            if(data.insertedId){
-                formRef.current.reset()
-                Swal.fire({
-                    icon: "success",
-                    title: "Yeah....",
-                    text: "Added in Successfull!",
-                  });
-            }
-        })
-    }
+  const formRef = useRef(null);
+  const {user} = useContext(AuthContext);
+  console.log(user);
+  const handleAddedFood = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const food_photo = form.get("photo");
+    const food_name = form.get("food_name");
+    const pickup_location = form.get("location");
+    const quantity = form.get("quantity");
+    const notes = form.get("additional_notes");
+    const expired_date = form.get("expired_date");
+    const status = form.get('status');  
+    const user_email = form.get("email");
+    const user_name = form.get("user_name");
+    const user_image = form.get("user_image");
+    const foodInfo = {
+     food_name,food_photo,pickup_location,quantity,notes,expired_date,status,user_email,user_name,user_image
+    };
+    console.log(foodInfo)
+    fetch("http://localhost:5000/foodsitem", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(foodInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          formRef.current.reset();
+          Swal.fire({
+            icon: "success",
+            title: "Yeah....",
+            text: "Added in Successfull!",
+          });
+        }
+      });
+  };
   return (
     <div className="bg-stone-200 font-montserrat font-bold">
-       <Helmet>
+      <Helmet>
         <title>Add Food Item </title>
         <meta name="description" content="Helmet application" />
       </Helmet>
       <form ref={formRef} onSubmit={handleAddedFood}>
-        <div>
-         <div className="grid md:grid-cols-2 gap-6 lg:max-w-5xl p-10 mx-auto mt-10 ">
-         <div className="form-control">
+        <div className="grid md:grid-cols-2 gap-6 lg:max-w-5xl p-10 mx-auto mt-10 ">
+          <div className="form-control">
             <label className="label">
               <span className="label-text">Food Image</span>
             </label>
             <input
               type="text"
               name="photo"
-              placeholder="image"
+              placeholder="Food Image"
               className="input input-bordered input-secondary w-full "
               required
             />
@@ -102,7 +105,7 @@ const AddFood = () => {
             </label>
             <input
               type="date"
-              name="expared_date"
+              name="expired_date"
               placeholder="Expired time/date"
               className="input input-bordered input-secondary w-full "
               required
@@ -132,58 +135,23 @@ const AddFood = () => {
               required
             />
           </div>
+        </div>
+        <div className="flex justify-center">
+          <h1 className="text-orange-600 font-bold text-3xl">
+            Donetor Information
+          </h1>
+        </div>
 
-         </div>
-          <div className="flex justify-center">
-            <h1>Donetor Information</h1>
-          </div>
+        <div className="grid md:grid-cols-2 gap-6 lg:max-w-5xl p-10 mx-auto mt-10">
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Seasonality</span>
-            </label>
-            <input
-              type="text"
-              name="seasonality"
-              placeholder="Seasonality"
-              className="input input-bordered input-secondary w-full "
-              required
-            />
-          </div>
-
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Travel Time</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Travel time"
-              name="traveltime"
-              className="input input-bordered input-secondary w-full "
-              required
-            />
-          </div>
-
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Total visitor per year</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Total visitors per yer"
-              name="totalVisitor"
-              className="input input-bordered input-secondary w-full "
-              required
-            />
-          </div>
-
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">You Email</span>
+              <span className="label-text">User Email</span>
             </label>
             <input
               type="text"
               name="email"
-              placeholder="Your Email"
+              defaultValue={user?.email}
+              placeholder="User Email"
               className="input input-bordered input-secondary w-full "
               required
             />
@@ -191,17 +159,32 @@ const AddFood = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Your Name</span>
+              <span className="label-text">User name</span>
             </label>
             <input
               type="text"
-              name="name"
+              name="user_name"
               placeholder="User Name"
+              defaultValue={user?.displayName}
               className="input input-bordered input-secondary w-full "
               required
             />
           </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">User Image</span>
+            </label>
+            <input
+              type="text"
+              name="user_image"
+              placeholder="User image"
+              defaultValue={user?.photoURL}
+              className="input input-bordered input-secondary w-full "
+              
+            />
+          </div>
         </div>
+
         <div className="form-control p-10 lg:max-w-5xl mx-auto">
           <button className="btn btn-primary w-full bg-orange-500">
             Add Food Item
