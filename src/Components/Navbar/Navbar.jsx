@@ -6,8 +6,8 @@ import Swal from "sweetalert2";
 const Navbar = () => {
 
   const navigate = useNavigate();
-  const [currentUser, setCurrentUser] = useState([]);
-  console.log(currentUser);
+  const [currentUser, setCurrentUser] = useState();
+  // console.log(currentUser);
   const { user, logOut } = useContext(AuthContext);
   console.log(user);
   useEffect(() => {
@@ -29,6 +29,7 @@ const Navbar = () => {
       })
       .catch((error) => console.error(error));
   };
+  console.log(currentUser);
   const NavLinks = (
     <>
       <li>
@@ -144,12 +145,12 @@ const Navbar = () => {
           <>
             <div>
               <NavLink to="/login">
-                <button className="btn mr-2 btn-secondary bg-purple-400">
+                <button className="btn mr-2 btn-secondary bg-orange-700">
                   Login
                 </button>
               </NavLink>
               <NavLink to="/register">
-                <button className="btn mr-2 btn-secondary bg-purple-400">
+                <button className="btn mr-2 btn-secondary bg-orange-700">
                   Register
                 </button>
               </NavLink>

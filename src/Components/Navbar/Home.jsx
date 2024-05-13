@@ -1,10 +1,19 @@
-
+import { useLoaderData } from "react-router-dom";
+import FoodCard from "../Available/FoodCard";
 
 const Home = () => {
-    return (
-        <div>
-<h1>this is home page</h1>            
+  const allFoods = useLoaderData().slice(0, 6);
+  console.log(allFoods);
+  return (
+    <div>
+      {
+        <div className="grid md:grid-cols-2  gap-5 p-5">
+          {allFoods.map((food) => (
+            <FoodCard key={food._id} food={food}></FoodCard>
+          ))}
         </div>
-    );
+      }
+    </div>
+  );
 };
 export default Home;
