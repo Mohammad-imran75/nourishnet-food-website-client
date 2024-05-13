@@ -4,24 +4,28 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const location = useLocation()
+  const location = useLocation();
   const navigate = useNavigate();
-  const [currentUser ,setCurrentUser] = useState([]);
-  console.log(currentUser)
-  const {user,logOut} = useContext(AuthContext)
+  const [currentUser, setCurrentUser] = useState([]);
+  console.log(currentUser);
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
   useEffect(() => {
-    setCurrentUser(user);
-  }, []);
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, [user]);
   const handleSignOut = () => {
     logOut()
       .then((result) => {
-       console.log(result);
+        console.log(result);
         Swal.fire({
           icon: "success",
           title: "Yeah....",
           text: "Please try another!",
         });
-        navigate(location?.state ? location.state : "/");
+        // navigate(location?.state ? location.state : "/");
+        navigate("/");
       })
       .catch((error) => console.error(error));
   };
@@ -40,32 +44,52 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink className={({ isActive }) =>
+        <NavLink
+          className={({ isActive }) =>
             isActive
               ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
               : "text-black mr-4"
-          } to="available">Available Food</NavLink>
+          }
+          to="available"
+        >
+          Available Food
+        </NavLink>
       </li>
       <li>
-        <NavLink className={({ isActive }) =>
+        <NavLink
+          className={({ isActive }) =>
             isActive
               ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
               : "text-black mr-4"
-          } to="addfood">Add Food</NavLink>
+          }
+          to="addfood"
+        >
+          Add Food
+        </NavLink>
       </li>
       <li>
-        <NavLink className={({ isActive }) =>
+        <NavLink
+          className={({ isActive }) =>
             isActive
               ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
               : "text-black mr-4"
-          } to="myfood">My Foods</NavLink>
+          }
+          to="myfood"
+        >
+          My Foods
+        </NavLink>
       </li>
       <li>
-        <NavLink className={({ isActive }) =>
+        <NavLink
+          className={({ isActive }) =>
             isActive
               ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
               : "text-black mr-4"
-          } to="request">Request Food</NavLink>
+          }
+          to="request"
+        >
+          Request Food
+        </NavLink>
       </li>
     </>
   );
@@ -104,13 +128,13 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{NavLinks}</ul>
       </div>
 
-      <div className="navbar-end"></div>
-      {currentUser ? (
+      <div className="navbar-end">
+        {currentUser ? (
           <>
             <div>
               <button
                 onClick={handleSignOut}
-                className="btn btn-secondary bg-purple-400"
+                className="btn btn-secondary bg-orange-600"
               >
                 Sign Out
               </button>
@@ -119,19 +143,20 @@ const Navbar = () => {
         ) : (
           <>
             <div>
-              <Link to="/login">
+              <NavLink to="/login">
                 <button className="btn mr-2 btn-secondary bg-purple-400">
                   Login
                 </button>
-              </Link>
-              <Link to="/register">
+              </NavLink>
+              <NavLink to="/register">
                 <button className="btn mr-2 btn-secondary bg-purple-400">
                   Register
                 </button>
-              </Link>
+              </NavLink>
             </div>
           </>
         )}
+      </div>
     </div>
   );
 };

@@ -8,6 +8,8 @@ import Myfood from "../Navbar/Myfood";
 import RequestFood from "../Navbar/RequestFood";
 import Login from "../User/Login";
 import Register from "../User/Resigter";
+import PrivateRoutes from "./PrivateRoutes";
+
 
 
 
@@ -18,7 +20,7 @@ import Register from "../User/Resigter";
           children:[
             {
               path:'/',
-              element:<Home></Home>
+              element:<PrivateRoutes><Home></Home></PrivateRoutes>
             },{
               path:'/available',
               element:<Available></Available>

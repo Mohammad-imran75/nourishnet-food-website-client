@@ -1,10 +1,12 @@
 import { FaGoogle} from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -13,16 +15,24 @@ const Login = () => {
     const password = form.get("password");
     console.log(email, password);
     loginUser(email, password)
-      .then((data) => {
-        const loggedUser = data.user;
-        console
-          .log(loggedUser)
-
-          .then((res) => {
-            console.log(res.data);
+    .then(result=>{
+        navigate(location?.state ? location.state : "/");
+        Swal.fire({
+            icon: "success",
+            title: "Yah....",
+            text: "Login in Successfull!",
           });
-      })
-      .catch((error) => console.error(error));
+    }).catch(error=>{
+        Swal.fire({
+            icon: "error",
+            title: "Yah....",
+            text: "Please try another!",
+          });
+    })
+
+          
+
+       
   };
 
   return (
