@@ -7,7 +7,6 @@ const SortSingleView = () => {
     food_name,
     food_photo,
     pickup_location,
-    quantity,
     notes,
     expired_date,
     status,

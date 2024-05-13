@@ -10,11 +10,14 @@ import Register from "../User/Resigter";
 import PrivateRoutes from "./PrivateRoutes";
 import UpdatedFood from "../Updated/UpdatedFood";
 import SortSingleView from "../Available/SortSingleView";
+import ErrorPage from "../ErrorPage/ErrorPage";
+import Modal from "../Request/Modal";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -66,6 +69,12 @@ const router = createBrowserRouter([
       },{
         path: "/view_details/:id",
         element: <SortSingleView></SortSingleView>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/foodsitem/${params.id}`),
+      }
+      ,{
+        path: "/details/:id",
+        element: <Modal></Modal>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/foodsitem/${params.id}`),
       }
