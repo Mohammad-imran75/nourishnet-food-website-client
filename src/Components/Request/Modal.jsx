@@ -1,18 +1,67 @@
+import { useContext, useRef } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Modal = () => {
   const requestFood = useLoaderData();
-
+  const { user } = useContext(AuthContext);
+  const formRef = useRef(null);
   const {
     food_name,
     food_photo,
     pickup_location,
-    quantity,
     notes,
     expired_date,
+    status,
+    _id,
+    user_email,
     user_name,
+    quantity
   } = requestFood;
-
+  const handleFoodRequest = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const food_photo = form.get("photo");
+    const food_name = form.get("food_name");
+    const pickup_location = form.get("location");
+    const notes = form.get("additional_notes");
+    const expired_date = form.get("expired_date");
+    const status = form.get("status");
+    const user_email = form.get("email");
+    const user_name = form.get("user_name");
+    const user_image = form.get("user_image");
+    const foodInfo = {
+      food_name,
+      food_photo,
+      pickup_location,
+      notes,
+      expired_date,
+      status,
+      user_email,
+      user_name,
+      user_image,
+    };
+    console.log(foodInfo);
+    fetch("https://nourishnet-food-website-server.vercel.app/request", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(foodInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          formRef.current.reset();
+          Swal.fire({
+            icon: "success",
+            title: "Yeah....",
+            text: "request in Successfull!",
+          });
+        }
+      });
+  };
   return (
     <div>
       <div>
@@ -67,22 +116,170 @@ const Modal = () => {
                 Food quantity : {quantity}
               </p>
             </div>
-            <button  onClick={() => document.getElementById("my_modal_3").showModal()} className="w-full btn btn-square bg-orange-700">
+            <button
+              onClick={() => document.getElementById("my_modal_4").showModal()}
+              className="w-full btn btn-square bg-orange-700"
+            >
               Request
             </button>
           </div>
         </div>
       </div>
-      <dialog id="my_modal_3" className="modal">
-        <div className="modal-box">
-          <form method="dialog">
-           
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-              ✕
-            </button>
+      <dialog id="my_modal_4" className="modal">
+        <div className="modal-box w-11/12 max-w-5xl">
+          <form ref={formRef} onSubmit={handleFoodRequest}>
+            <div className="grid md:grid-cols-2 gap-6 lg:max-w-5xl p-10 mx-auto mt-10 ">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Food Image</span>
+                </label>
+                <input
+                  type="text"
+                  name="photo"
+                  defaultValue={food_photo}
+                  placeholder="Food Image"
+                  className="input input-bordered input-secondary w-full "
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Donetor Email</span>
+                </label>
+                <input
+                  type="text"
+                  name="donetor_email"
+                  defaultValue={user_email}
+                  placeholder="Food Image"
+                  className="input input-bordered input-secondary w-full "
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Food Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="food_name"
+                  placeholder="Food Name"
+                  defaultValue={food_name}
+                  className="input input-bordered input-secondary w-full "
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Pick Up location</span>
+                </label>
+                <input
+                  type="text"
+                  name="location"
+                  defaultValue={pickup_location}
+                  placeholder="location"
+                  className="input input-bordered input-secondary w-full "
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Expired Time/date</span>
+                </label>
+                <input
+                  type="date"
+                  name="expired_date"
+                  defaultValue={expired_date}
+                  placeholder="Expired time/date"
+                  className="input input-bordered input-secondary w-full "
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Additional Notes</span>
+                </label>
+                <input
+                  type="text"
+                  name="additional_notes"
+                  defaultValue={notes}
+                  placeholder="Additional Notes"
+                  className="input input-bordered input-secondary w-full "
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Food Status</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Food Status"
+                  defaultValue={status}
+                  name="status"
+                  className="input input-bordered input-secondary w-full "
+                  required
+                />
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <h1 className="text-orange-600 font-bold text-3xl">
+                Donetor Information
+              </h1>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 lg:max-w-5xl p-10 mx-auto mt-10">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">User Email</span>
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  defaultValue={user?.email}
+                  placeholder="User Email"
+                  className="input input-bordered input-secondary w-full "
+                  required
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">User name</span>
+                </label>
+                <input
+                  type="text"
+                  name="user_name"
+                  placeholder="User Name"
+                  defaultValue={user?.displayName}
+                  className="input input-bordered input-secondary w-full "
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Food Id</span>
+                </label>
+                <input
+                  type="text"
+                  name="food_id"
+                  placeholder="Food Id"
+                  defaultValue={_id}
+                  className="input input-bordered input-secondary w-full "
+                />
+              </div>
+            </div>
+
+            <div className="form-control p-10 lg:max-w-5xl mx-auto">
+              <button className="btn btn-primary w-full bg-orange-500">
+                Add Food Item
+              </button>
+            </div>
           </form>
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click on ✕ button to close</p>
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn">Close</button>
+            </form>
+          </div>
         </div>
       </dialog>
     </div>
