@@ -10,7 +10,7 @@ const Home = () => {
         <Banner></Banner>
       {
         <div className="grid md:grid-cols-2  gap-5 p-5">
-          {allFoods.map((food) => (
+          {allFoods?.map((food) => (
             <FoodCard key={food._id} food={food}></FoodCard>
           ))}
         </div>

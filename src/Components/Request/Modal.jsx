@@ -1,10 +1,8 @@
-
 import { useLoaderData } from "react-router-dom";
 
 const Modal = () => {
   const requestFood = useLoaderData();
- 
-  
+
   const {
     food_name,
     food_photo,
@@ -12,12 +10,11 @@ const Modal = () => {
     quantity,
     notes,
     expired_date,
-    user_name
+    user_name,
   } = requestFood;
-  
+
   return (
     <div>
-      
       <div>
         <h2 className="text-3xl font-bold text-center text-orange-900 mt-10 border-b-2 border-orange-700 pb-2">
           Donator Information
@@ -64,16 +61,30 @@ const Modal = () => {
                 </h3>
               </a>
               <p className="leading-snug font-semibold text-gray-600">
-               Food Name : {food_name}
+                Food Name : {food_name}
               </p>
               <p className="leading-snug font-semibold text-gray-600">
-               Food quantity : {quantity}
+                Food quantity : {quantity}
               </p>
             </div>
-            <button className="w-full btn btn-square bg-orange-700">Request</button>
+            <button  onClick={() => document.getElementById("my_modal_3").showModal()} className="w-full btn btn-square bg-orange-700">
+              Request
+            </button>
           </div>
         </div>
       </div>
+      <dialog id="my_modal_3" className="modal">
+        <div className="modal-box">
+          <form method="dialog">
+           
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+          <h3 className="font-bold text-lg">Hello!</h3>
+          <p className="py-4">Press ESC key or click on ✕ button to close</p>
+        </div>
+      </dialog>
     </div>
   );
 };
