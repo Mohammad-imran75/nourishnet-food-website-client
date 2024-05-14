@@ -7,6 +7,7 @@ const Available = () => {
   console.log(allFoods);
   const [availableFood, setAvailableFood] = useState([]);
   const [sortedFoods, setSortedFoods] = useState("asc");
+  const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
     const availableFoods = allFoods.filter(
       (food) => food?.status === "available"
@@ -18,7 +19,16 @@ const Available = () => {
   const handleSortOrderChange = () => {
     setSortedFoods(sortedFoods === "asc" ? "desc" : "asc");
   };
-  const sortedAllFoods = [...availableFood].sort((a, b) => {
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  // Filter availableFood based on search query
+  const filteredFoods = availableFood.filter((food) =>
+    food.food_name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const sortedAllFoods = [...filteredFoods].sort((a, b) => {
     const dateA = new Date(a.expired_date);
     const dateB = new Date(b.expired_date);
     return sortedFoods === "asc" ? dateA - dateB : dateB - dateA;
@@ -63,6 +73,8 @@ const Available = () => {
                     <input
                       className="input input-bordered join-item"
                       placeholder="Search"
+                      value={searchQuery}
+                      onChange={handleSearchChange}
                     />
                   </div>
                 </div>
@@ -74,10 +86,7 @@ const Available = () => {
                   <option value="descending">Descending</option>
                 </select>
                 <div className="indicator">
-                  <span className="indicator-item badge badge-secondary">
-                    new
-                  </span>
-                  <button className="btn join-item">Search</button>
+                  <button onClick={()=>console.log('clicked')} className="btn join-item">Search</button>
                 </div>
               </div>
             </div>

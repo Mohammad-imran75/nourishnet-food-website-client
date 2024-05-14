@@ -14,7 +14,7 @@ const Banner = () => {
           <p className="mb-5">
           Creating a digital platform connecting local farmers directly with consumers, promoting farm-to-table transparency and supporting sustainable food systems.
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <button className="btn btn-primary bg-orange-700">Get Started</button>
         </div>
       </div>
     </div>
