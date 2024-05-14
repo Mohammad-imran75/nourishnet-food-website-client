@@ -42,7 +42,7 @@ const Myfood = () => {
     });
   };
   return (
-    <div className="overflow-x-auto ">
+    <div className="overflow-x-auto mt-10">
       <table className="table">
         
         <thead>
@@ -51,8 +51,8 @@ const Myfood = () => {
              
             </th>
             <th className="font-bold text-xl">image</th>
-            <th className="font-bold text-xl">Price</th>
-            <th className="font-bold text-xl">Date</th>
+            <th className="font-bold text-xl">Expired Date/time</th>
+            <th className="font-bold text-xl">Pickdup Location</th>
             <th className="font-bold text-xl">update</th>
             <th className="font-bold text-xl">delete</th>
           </tr>

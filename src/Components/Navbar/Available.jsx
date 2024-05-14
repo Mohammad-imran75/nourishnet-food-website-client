@@ -39,14 +39,8 @@ const Available = () => {
               and craftsmanship.
             </p>
             <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                className="px-8 py-3 text-lg font-semibold rounded dark:bg-violet-600 dark:text-gray-50"
-              >
-                Suspendisse
-              </a>
-              <div className="text-center font-bold text mt-10 ">
+
+              {/* <div className="text-center font-bold text mt-10 ">
                 <p className="text-3xl text-fuchsia-800"> Sorting :</p>
                 <select value={sortedFoods} onChange={handleSortOrderChange}>
                   <option
@@ -62,6 +56,29 @@ const Available = () => {
                     Descending
                   </option>
                 </select>
+              </div> */}
+              <div className="join">
+                <div>
+                  <div>
+                    <input
+                      className="input input-bordered join-item"
+                      placeholder="Search"
+                    />
+                  </div>
+                </div>
+                <select value={sortedFoods} onChange={handleSortOrderChange} className="select select-bordered join-item">
+                  <option disabled selected>
+                    Sort 
+                  </option>
+                  <option value="ascending">Ascending</option>
+                  <option value="descending">Descending</option>
+                </select>
+                <div className="indicator">
+                  <span className="indicator-item badge badge-secondary">
+                    new
+                  </span>
+                  <button className="btn join-item">Search</button>
+                </div>
               </div>
             </div>
           </div>
