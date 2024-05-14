@@ -96,7 +96,7 @@ const Navbar = () => {
   );
   return (
     <div
-      className={`navbar bg-gradient-to-r from-purple-600 via-pink-400 to-red-400 rounded-lg p-4 font-montserrat`}
+      className={`navbar bg-gradient-to-r from-purple-600 via-pink-400 to-red-400 rounded-lg p-6 font-montserrat`}
     >
       <div className="navbar-start">
         <div className="dropdown">
@@ -123,7 +123,10 @@ const Navbar = () => {
             {NavLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-3xl text-red-500">NourishNet</a>
+       <div className="flex">
+        <img className="w-[60px]" src="https://i.ibb.co/k0fcN1G/7803017.jpg" alt="" />
+       <a className="btn btn-ghost text-3xl text-red-500">NourishNet</a>
+       </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{NavLinks}</ul>

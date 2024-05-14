@@ -22,12 +22,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/foodsitem"),
+        loader: () => fetch("https://nourishnet-food-website-server.vercel.app/foodsitem"),
       },
       {
         path: "/available",
         element: <Available></Available>,
-        loader:()=>fetch('http://localhost:5000/foodsitem')
+        loader:()=>fetch('https://nourishnet-food-website-server.vercel.app/foodsitem')
       },
       {
         path: "/addfood",
@@ -65,18 +65,18 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <UpdatedFood></UpdatedFood>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/foodsitem/${params.id}`),
+          fetch(`https://nourishnet-food-website-server.vercel.app/foodsitem/${params.id}`),
       },{
         path: "/view_details/:id",
         element: <SortSingleView></SortSingleView>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/foodsitem/${params.id}`),
+          fetch(`https://nourishnet-food-website-server.vercel.app/foodsitem/${params.id}`),
       }
       ,{
         path: "/details/:id",
         element: <Modal></Modal>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/foodsitem/${params.id}`),
+          fetch(`https://nourishnet-food-website-server.vercel.app/foodsitem/${params.id}`),
       }
     ],
   },

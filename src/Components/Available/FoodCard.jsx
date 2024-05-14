@@ -1,9 +1,11 @@
-import { useState } from "react";
+
+
 import { Link } from "react-router-dom";
-import Modal from "../Request/Modal";
+
 
 
 const FoodCard = ({ food }) => {
+
     const { food_name,food_photo,pickup_location,quantity,notes,expired_date,status,user_email,user_name,user_image,_id} = food;
   console.log(food);
   
@@ -105,10 +107,10 @@ const FoodCard = ({ food }) => {
          
         
         </div>
-        <Link to={`/details/${_id}`}> <button className="w-full btn btn-success mt-3 text-white bg-orange-700"> View Details </button>
+        <Link to={`/details/${_id}`}> <button  className="w-full btn btn-success mt-3 text-white bg-orange-700"> View Details </button>
         </Link>
       </div>
-      
+     
    </div>
   );
 };
