@@ -35,4 +35,4 @@ Welcome to our Community Food Sharing and Surplus Reduction Platform! This platf
 ### Conclusion
 Our Community Food Sharing and Surplus Reduction Platform is a testament to our commitment to leveraging technology for social good. With its intuitive interface and robust features, we aim to bridge the gap between food surplus and those in need, fostering a more equitable and compassionate community.
 
-[Live Website](#)
+[Live Website](#) https://nourishnet-food-website.web.app/
