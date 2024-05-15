@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import FoodCard from "../Available/FoodCard";
 import Banner from "../Banner/Banner";
 import Review from "../review/Review";
+import Mission from "../mission/Mission";
 
 const Home = () => {
   const allFoods = useLoaderData().slice(0, 6);
@@ -17,8 +18,8 @@ const Home = () => {
           ))}
         </div>
       </div>
-
       <Review />
+      <Mission/>
     </div>
   );
 };
