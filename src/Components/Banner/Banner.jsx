@@ -41,10 +41,12 @@ const Banner = () => {
           />
           <div className="lg:absolute top-[200px] left-[350px] ">
             <h1 className="text-5xl text-rose-500 font-extrabold">
-            Connect. Conserve. Care.
+              Connect. Conserve. Care.
             </h1>
             <p className="text-xl lg:w-[500px] mx-auto font-semibold text-yellow-200 mt-3">
-            Join us in creating a sustainable future by reducing food waste and sharing surplus with those in need. Together, we can make a significant impact on our community iss well-being.
+              Join us in creating a sustainable future by reducing food waste
+              and sharing surplus with those in need. Together, we can make a
+              significant impact on our community iss well-being.
             </p>
           </div>
         </SwiperSlide>
@@ -56,10 +58,12 @@ const Banner = () => {
           />
           <div className="lg:absolute top-[200px] left-[350px] ">
             <h1 className="text-5xl text-rose-500 font-extrabold">
-            Connect. Conserve. Care.
+              Connect. Conserve. Care.
             </h1>
             <p className="text-xl lg:w-[500px] mx-auto font-semibold text-yellow-200 mt-3">
-            Be a part of the solution to food waste by sharing surplus food with your community. Together, we can create a healthier and more sustainable world.
+              Be a part of the solution to food waste by sharing surplus food
+              with your community. Together, we can create a healthier and more
+              sustainable world.
             </p>
           </div>
         </SwiperSlide>
@@ -71,10 +75,11 @@ const Banner = () => {
           />
           <div className="lg:absolute top-[200px] left-[350px] ">
             <h1 className="text-5xl text-rose-500 font-extrabold">
-            Connect. Conserve. Care.
+              Connect. Conserve. Care.
             </h1>
             <p className="text-xl lg:w-[500px] mx-auto font-semibold text-yellow-200 mt-3">
-            Unite to fight food waste and support those in need. Share surplus food and make a difference in your community today.
+              Unite to fight food waste and support those in need. Share surplus
+              food and make a difference in your community today.
             </p>
           </div>
         </SwiperSlide>
@@ -86,10 +91,12 @@ const Banner = () => {
           />
           <div className="lg:absolute top-[200px] left-[350px] ">
             <h1 className="text-5xl text-rose-500 font-extrabold">
-            Connect. Conserve. Care.
+              Connect. Conserve. Care.
             </h1>
             <p className="text-xl lg:w-[500px] mx-auto font-semibold text-yellow-200 mt-3">
-            Transform surplus into support by sharing food within your community. Let is work together to reduce waste and nourish those in need.
+              Empower your community through food sharing and surplus reduction
+              with our innovative platform. Join us in making a meaningful
+              impact, one meal at a time.
             </p>
           </div>
         </SwiperSlide>
@@ -101,10 +108,12 @@ const Banner = () => {
           />
           <div className="lg:absolute top-[200px] left-[350px] ">
             <h1 className="text-5xl text-rose-500 font-extrabold">
-            Connect. Conserve. Care.
+              Connect. Conserve. Care.
             </h1>
             <p className="text-xl lg:w-[500px] mx-auto font-semibold text-yellow-200 mt-3">
-            Transform surplus into support by sharing food within your community. Let is work together to reduce waste and nourish those in need.
+              Transform surplus into support by sharing food within your
+              community. Let is work together to reduce waste and nourish those
+              in need.
             </p>
           </div>
         </SwiperSlide>
