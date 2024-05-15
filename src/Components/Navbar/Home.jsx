@@ -9,13 +9,16 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-
-      <div className="grid md:grid-cols-2  gap-5 p-5">
-        {allFoods?.map((food) => (
-          <FoodCard key={food._id} food={food}></FoodCard>
-        ))}
+      <div>
+        <p className="text-center text-2xl font-bold">Foods |</p>
+        <div className="grid md:grid-cols-3  gap-5 p-5">
+          {allFoods?.map((food) => (
+            <FoodCard key={food._id} food={food}></FoodCard>
+          ))}
+        </div>
       </div>
-      <Review/>
+
+      <Review />
     </div>
   );
 };
