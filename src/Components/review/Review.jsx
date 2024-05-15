@@ -3,7 +3,7 @@ import React from "react";
 const Review = () => {
   return (
     <div>
-        <p className="text-center text-2xl font-semibold">Our Clients Say's |</p>
+        <p className="text-center text">Our Clients Says |</p>
         <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
       <li>
         <div className="timeline-middle">
@@ -23,12 +23,7 @@ const Review = () => {
         <div className="timeline-start md:text-end mb-10">
           <time className="font-mono italic">Raihanul Islam</time>
           <div className="text-lg font-black">chiken Biriyani</div>
-          The Apple Macintosh—later rebranded as the Macintosh 128K—is the
-          original Apple Macintosh personal computer. It played a pivotal role
-          in establishing desktop publishing as a general office function. The
-          motherboard, a 9 in (23 cm) CRT monitor, and a floppy drive were
-          housed in a beige case with integrated carrying handle; it came with a
-          keyboard and single-button mouse.
+          Chicken biryani is an absolute delight! The fragrant basmati rice perfectly complements the tender, flavorful chicken pieces, creating a harmonious blend of spices that tantalizes the taste buds. The rich aroma that fills the air as it is being served heightens the anticipation and makes the dining experience even more enjoyable. The balance of spices is spot on, not too overwhelming, making it suitable for both mild and spicy food lovers. Overall, chicken biryani is a crowd-pleaser, offering a satisfying and memorable meal every time.
         </div>
         <hr />
       </li>
@@ -50,11 +45,8 @@ const Review = () => {
         </div>
         <div className="timeline-end mb-10">
           <time className="font-mono italic">Adip Barua</time>
-          <div className="text-lg font-black">Halim </div>
-          Halim is a family of all-in-one Mac desktop computers designed and
-          built by Apple Inc. It has been the primary part of Apple's consumer
-          desktop offerings since its debut in August 1998, and has evolved
-          through seven distinct forms
+          <div className="text-lg font-black">RosoGulla </div>
+          Rosogolla is an exceptional dessert! The spongy, soft texture of the cheese balls soaked in sweet syrup creates a heavenly experience with every bite. The light, sugary syrup is not overly sweet, striking the perfect balance that enhances the flavor of the rosogolla without being overpowering. The freshness and quality of the ingredients are evident, making each piece melt in your mouth. Overall, rosogolla is a delightful treat that never fails to bring joy and satisfaction, making it a favorite among dessert lovers.
         </div>
         <hr />
       </li>
@@ -76,14 +68,8 @@ const Review = () => {
         </div>
         <div className="timeline-start md:text-end mb-10">
           <time className="font-mono italic">Sumaiya Mourin Puspa</time>
-          <div className="text-lg font-black">Fucka</div>
-          The iPod is a discontinued series of portable media players and
-          multi-purpose mobile devices designed and marketed by Apple Inc. The
-          first version was released on October 23, 2001, about 8+1⁄2 months
-          after the Macintosh version of iTunes was released. Apple sold an
-          estimated 450 million iPod products as of 2022. Apple discontinued the
-          iPod product line on May 10, 2022. At over 20 years, the iPod brand is
-          the oldest to be discontinued by Apple
+          <div className="text-lg font-black">Mutton rezala</div>
+          Mutton rezala is a culinary delight, with tender mutton pieces cooked to perfection in a rich, creamy gravy infused with aromatic spices. The balance of flavors is impeccable, creating a dish that is both indulgent and sophisticated. Every bite of mutton rezala is a testament to the artistry of Indian cuisine, leaving a lasting impression of exquisite taste and culinary mastery.
         </div>
         <hr />
       </li>
@@ -105,14 +91,8 @@ const Review = () => {
         </div>
         <div className="timeline-end mb-10">
           <time className="font-mono italic">Imran Ahmed</time>
-          <div className="text-lg font-black">chomosa </div>
-          Chomosaa is a line of smartphones produced by Apple Inc. that use
-          Apple's own iOS mobile operating system. The first-generation iPhone
-          was announced by then-Apple CEO Steve Jobs on January 9, 2007. Since
-          then, Apple has annually released new iPhone models and iOS updates.
-          As of November 1, 2018, more than 2.2 billion iPhones had been sold.
-          As of 2022, the iPhone accounts for 15.6% of global smartphone market
-          share
+          <div className="text-lg font-black">Prawn curry </div>
+          Prawn curry is a flavorful delight, with succulent prawns cooked in a fragrant, spicy gravy that tantalizes the taste buds. The combination of fresh seafood and aromatic spices creates a dish that is both comforting and exotic. Whether paired with rice or bread, prawn curry offers a satisfying culinary experience that leaves a lasting impression of coastal indulgence.
         </div>
         <hr />
       </li>
