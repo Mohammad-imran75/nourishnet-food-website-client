@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const Modal = () => {
   const requestFood = useLoaderData();
-  console.log(requestFood)
+  // console.log(requestFood)
   const { user } = useContext(AuthContext);
   const formRef = useRef(null);
   const {

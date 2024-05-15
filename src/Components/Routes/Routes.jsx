@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: "/available",
         element: <Available></Available>,
-        loader:()=>fetch('http://localhost:5000/foodsitem')
+        loader: () => fetch("http://localhost:5000/foodsitem"),
       },
       {
         path: "/addfood",
@@ -47,11 +47,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/request",
+
         element: (
           <PrivateRoutes>
             <RequestFood></RequestFood>
           </PrivateRoutes>
         ),
+        loader:()=>fetch('http://localhost:5000/request')
       },
       {
         path: "/login",
@@ -66,18 +68,19 @@ const router = createBrowserRouter([
         element: <UpdatedFood></UpdatedFood>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/foodsitem/${params.id}`),
-      },{
+      },
+      {
         path: "/view_details/:id",
         element: <SortSingleView></SortSingleView>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/foodsitem/${params.id}`),
-      }
-      ,{
+      },
+      {
         path: "/details/:id",
         element: <Modal></Modal>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/foodsitem/${params.id}`),
-      }
+      },
     ],
   },
 ]);
