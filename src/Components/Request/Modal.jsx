@@ -46,7 +46,7 @@ const Modal = () => {
       request_date
     };
     console.log(foodInfo);
-    fetch("http://localhost:5000/request", {
+    fetch("https://nourishnet-food-website-server.vercel.app/request", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -58,7 +58,7 @@ const Modal = () => {
         if (data.insertedId) {
           formRef.current.reset();
           // quantity descress
-          fetch(`http://localhost:5000/quantity?id=${food_id}`,{
+          fetch(`https://nourishnet-food-website-server.vercel.app/quantity?id=${food_id}`,{
             method:"PUT",
             headers: {
               "content-type": "application/json",

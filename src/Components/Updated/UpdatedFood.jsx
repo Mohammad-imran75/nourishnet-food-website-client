@@ -38,7 +38,7 @@ const UpdatedFood = () => {
       status,
     };
     console.log(updatedFoodInfo);
-    fetch(`http://localhost:5000/foodsitem/${_id}`, {
+    fetch(`https://nourishnet-food-website-server.vercel.app/foodsitem/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

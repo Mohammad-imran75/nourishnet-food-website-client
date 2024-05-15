@@ -1,11 +1,11 @@
-import { FaGoogle} from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser,googleLogin,setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -15,31 +15,43 @@ const Login = () => {
     const password = form.get("password");
     console.log(email, password);
     loginUser(email, password)
-    .then(result=>{
+      .then((result) => {
         navigate(location?.state ? location.state : "/");
+        Swal.fire({
+          icon: "success",
+          title: "Yah....",
+          text: "Login in Successfull!",
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Yah....",
+          text: "Please try another!",
+        });
+      });
+  };
+  const handleGoogleLogin=()=>{
+    googleLogin()
+    .then(result=>{
         Swal.fire({
             icon: "success",
             title: "Yah....",
-            text: "Login in Successfull!",
+            text: "Loging in Successfull!",
           });
-    }).catch(error=>{
-        Swal.fire({
-            icon: "error",
-            title: "Yah....",
-            text: "Please try another!",
-          });
+          setUser(result)
     })
-
-          
-
-       
-  };
-
+    .catch(error=>console.error(error))
+  }
   return (
     <div className="hero min-h-screen bg-gradient-to-r from-purple-300 via-[#ff7e5f] to-[#feb47b]">
       <div className="hero-content flex-col gap-10 lg:flex-row">
         <div className="text-center lg:text-left">
-          <img className="lg:w-[500px]" src="https://i.ibb.co/thh5h9y/333073-P9-ZZLU-520.jpg" alt="" />
+          <img
+            className="lg:w-[500px]"
+            src="https://i.ibb.co/thh5h9y/333073-P9-ZZLU-520.jpg"
+            alt=""
+          />
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSignUp} className="card-body">
@@ -73,7 +85,7 @@ const Login = () => {
             </div>
             <p className="text-center">or Sign up with</p>
             <div className="text-2xl flex mt-5 justify-center gap-5">
-              <FaGoogle></FaGoogle>
+              <FaGoogle onClick={handleGoogleLogin}></FaGoogle>
             </div>
           </form>
           <h1 className="text-center mb-4 font-bold">
