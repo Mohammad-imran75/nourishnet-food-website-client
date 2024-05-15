@@ -24,7 +24,7 @@ const AddFood = () => {
      food_name,food_photo,pickup_location,quantity,notes,expired_date,status,user_email,user_name,user_image
     };
     console.log(foodInfo)
-    fetch("https://nourishnet-food-website-server.vercel.app/foodsitem", {
+    fetch("https://foodhaven-project.vercel.app/foodsitem", {
       method: "POST",
       headers: {
         "content-type": "application/json",

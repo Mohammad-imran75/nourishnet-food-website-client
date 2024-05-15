@@ -22,12 +22,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://nourishnet-food-website-server.vercel.app/foodsitem"),
+        loader: () => fetch("https://foodhaven-project.vercel.app/foodsitem"),
       },
       {
         path: "/available",
         element: <Available></Available>,
-        loader: () => fetch("https://nourishnet-food-website-server.vercel.app/foodsitem"),
+        loader: () => fetch("https://foodhaven-project.vercel.app/foodsitem"),
       },
       {
         path: "/addfood",
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
             <RequestFood></RequestFood>
           </PrivateRoutes>
         ),
-        loader:()=>fetch('https://nourishnet-food-website-server.vercel.app/request')
+        loader:()=>fetch('https://foodhaven-project.vercel.app/request')
       },
       {
         path: "/login",
@@ -67,19 +67,19 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <UpdatedFood></UpdatedFood>,
         loader: ({ params }) =>
-          fetch(`https://nourishnet-food-website-server.vercel.app/foodsitem/${params.id}`),
+          fetch(`https://foodhaven-project.vercel.app/foodsitem/${params.id}`),
       },
       {
         path: "/view_details/:id",
         element: <SortSingleView></SortSingleView>,
         loader: ({ params }) =>
-          fetch(`https://nourishnet-food-website-server.vercel.app/foodsitem/${params.id}`),
+          fetch(`https://foodhaven-project.vercel.app/foodsitem/${params.id}`),
       },
       {
         path: "/details/:id",
         element: <Modal></Modal>,
         loader: ({ params }) =>
-          fetch(`https://nourishnet-food-website-server.vercel.app/foodsitem/${params.id}`),
+          fetch(`https://foodhaven-project.vercel.app/foodsitem/${params.id}`),
       },
     ],
   },

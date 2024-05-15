@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
     const unSubscrive = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        fetch("https://nourishnet-food-website-server.vercel.app/jwt", {
+        fetch("https://foodhaven-project.vercel.app/jwt", {
           method: "POST",
           headers: {
             Accept: "application/json",

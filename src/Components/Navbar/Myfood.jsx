@@ -8,7 +8,7 @@ const Myfood = () => {
   console.log(foods);
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`https://nourishnet-food-website-server.vercel.app/foodsitem?email=${user?.email}`)
+    fetch(`https://foodhaven-project.vercel.app/foodsitem?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setFoods(data));
   }, [user]);
@@ -23,7 +23,7 @@ const Myfood = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://nourishnet-food-website-server.vercel.app/foodsitem/${id}`, {
+        fetch(`https://foodhaven-project.vercel.app/foodsitem/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
