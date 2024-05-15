@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 const Modal = () => {
   const requestFood = useLoaderData();
+  console.log(requestFood)
   const { user } = useContext(AuthContext);
   const formRef = useRef(null);
   const {
@@ -13,7 +14,6 @@ const Modal = () => {
     pickup_location,
     notes,
     expired_date,
-    status,
     _id,
     user_email,
     user_name,
@@ -24,26 +24,29 @@ const Modal = () => {
     const form = new FormData(e.currentTarget);
     const food_photo = form.get("photo");
     const food_name = form.get("food_name");
+    const donetor_email = form.get("donetor_email")
     const pickup_location = form.get("location");
     const notes = form.get("additional_notes");
     const expired_date = form.get("expired_date");
-    const status = form.get("status");
+    const donetor_name = form.get('donetor_name');
     const user_email = form.get("email");
-    const user_name = form.get("user_name");
-    const user_image = form.get("user_image");
+    const request_date = form.get('request_date');
+    const food_id = form.get('food_id');
+    
     const foodInfo = {
       food_name,
       food_photo,
+      donetor_name,
       pickup_location,
       notes,
       expired_date,
-      status,
       user_email,
-      user_name,
-      user_image,
+      donetor_email,
+      food_id,
+      request_date
     };
     console.log(foodInfo);
-    fetch("https://nourishnet-food-website-server.vercel.app/request", {
+    fetch("http://localhost:5000/request", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -54,11 +57,20 @@ const Modal = () => {
       .then((data) => {
         if (data.insertedId) {
           formRef.current.reset();
+          // quantity descress
+          fetch(`http://localhost:5000/quantity?id=${food_id}`,{
+            method:"PUT",
+            headers: {
+              "content-type": "application/json",
+            },
+          }).then(res=>res.json())
+          .then(updatedData=> console.log(updatedData))
           Swal.fire({
             icon: "success",
             title: "Yeah....",
             text: "request in Successfull!",
           });
+
         }
       });
   };
@@ -136,6 +148,7 @@ const Modal = () => {
                 <input
                   type="text"
                   name="photo"
+                  readOnly
                   defaultValue={food_photo}
                   placeholder="Food Image"
                   className="input input-bordered input-secondary w-full "
@@ -148,6 +161,7 @@ const Modal = () => {
                 </label>
                 <input
                   type="text"
+                  readOnly
                   name="donetor_email"
                   defaultValue={user_email}
                   placeholder="Food Image"
@@ -162,6 +176,7 @@ const Modal = () => {
                 <input
                   type="text"
                   name="food_name"
+                  readOnly
                   placeholder="Food Name"
                   defaultValue={food_name}
                   className="input input-bordered input-secondary w-full "
@@ -175,6 +190,7 @@ const Modal = () => {
                 <input
                   type="text"
                   name="location"
+                  readOnly
                   defaultValue={pickup_location}
                   placeholder="location"
                   className="input input-bordered input-secondary w-full "
@@ -188,6 +204,21 @@ const Modal = () => {
                 <input
                   type="date"
                   name="expired_date"
+                  readOnly
+                  defaultValue={expired_date}
+                  placeholder="Expired time/date"
+                  className="input input-bordered input-secondary w-full "
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Request Time/date</span>
+                </label>
+                <input
+                  type="date"
+                  name="request_date"
+                  readOnly
                   defaultValue={expired_date}
                   placeholder="Expired time/date"
                   className="input input-bordered input-secondary w-full "
@@ -209,48 +240,14 @@ const Modal = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Food Status</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Food Status"
-                  defaultValue={status}
-                  name="status"
-                  className="input input-bordered input-secondary w-full "
-                  required
-                />
-              </div>
-            </div>
-            <div className="flex justify-center">
-              <h1 className="text-orange-600 font-bold text-3xl">
-                Donetor Information
-              </h1>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 lg:max-w-5xl p-10 mx-auto mt-10">
-              <div className="form-control">
-                <label className="label">
                   <span className="label-text">User Email</span>
                 </label>
                 <input
                   type="text"
                   name="email"
+                  readOnly
                   defaultValue={user?.email}
                   placeholder="User Email"
-                  className="input input-bordered input-secondary w-full "
-                  required
-                />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">User name</span>
-                </label>
-                <input
-                  type="text"
-                  name="user_name"
-                  placeholder="User Name"
-                  defaultValue={user?.displayName}
                   className="input input-bordered input-secondary w-full "
                   required
                 />
@@ -261,14 +258,28 @@ const Modal = () => {
                 </label>
                 <input
                   type="text"
+                  readOnly
                   name="food_id"
                   placeholder="Food Id"
                   defaultValue={_id}
                   className="input input-bordered input-secondary w-full "
                 />
               </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Donetor Name</span>
+                </label>
+                <input
+                  type="text"
+                  readOnly
+                  name="donetor_name"
+                  placeholder="Donetor Name"
+                  defaultValue={user_name}
+                  className="input input-bordered input-secondary w-full "
+                />
+              </div>
             </div>
-
+           
             <div className="form-control p-10 lg:max-w-5xl mx-auto">
               <button className="btn btn-primary w-full bg-orange-500">
                 Add Food Item
