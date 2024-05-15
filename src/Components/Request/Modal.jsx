@@ -282,13 +282,13 @@ const Modal = () => {
            
             <div className="form-control p-10 lg:max-w-5xl mx-auto">
               <button className="btn btn-primary w-full bg-orange-500">
-                Add Food Item
+                Request Food Item 
               </button>
             </div>
           </form>
           <div className="modal-action">
             <form method="dialog">
-              <button className="btn">Close</button>
+              <button className="btn btn-success bg-orange-700">Close</button>
             </form>
           </div>
         </div>

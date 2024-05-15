@@ -18,14 +18,15 @@ const Navbar = () => {
   const handleSignOut = () => {
     logOut()
       .then((result) => {
+        navigate(location?.state ? location.state : "/");
         console.log(result);
         Swal.fire({
           icon: "success",
           title: "Yeah....",
           text: "Please try another!",
         });
-        // navigate(location?.state ? location.state : "/");
-        navigate("/");
+       
+        
       })
       .catch((error) => console.error(error));
   };

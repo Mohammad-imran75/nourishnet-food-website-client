@@ -5,7 +5,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { loginUser,googleLogin,setUser } = useContext(AuthContext);
+  const { loginUser,googleLogin,setUser} = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -34,6 +34,7 @@ const Login = () => {
   const handleGoogleLogin=()=>{
     googleLogin()
     .then(result=>{
+      navigate(location?.state ? location.state : "/");
         Swal.fire({
             icon: "success",
             title: "Yah....",
