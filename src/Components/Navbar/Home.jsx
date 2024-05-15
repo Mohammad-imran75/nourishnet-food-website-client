@@ -11,7 +11,7 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <div>
-        <p className="text-center text-2xl font-bold">Foods |</p>
+        <p className="text-center text-2xl font-bold mt-6">Foods |</p>
         <div className="grid md:grid-cols-3  gap-5 p-5">
           {allFoods?.map((food) => (
             <FoodCard key={food._id} food={food}></FoodCard>

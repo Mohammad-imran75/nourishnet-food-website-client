@@ -6,7 +6,7 @@ import {
   Scrollbar,
   A11y,
   EffectFade,
-  Autoplay
+  Autoplay,
 } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -15,9 +15,16 @@ import "swiper/css/autoplay";
 
 const Banner = () => {
   return (
-   <div>
-     <Swiper
-        modules={[Navigation, Pagination,Autoplay, Scrollbar, A11y, EffectFade]}
+    <div>
+      <Swiper
+        modules={[
+          Navigation,
+          Pagination,
+          Autoplay,
+          Scrollbar,
+          A11y,
+          EffectFade,
+        ]}
         spaceBetween={50}
         effect="flip"
         slidesPerView={1}
@@ -25,9 +32,8 @@ const Banner = () => {
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         autoplay={{ delay: 3000 }}
-
       >
-    <SwiperSlide>
+        <SwiperSlide>
           <img
             style={{ width: "100%", height: "90vh" }}
             src="https://i.ibb.co/Qfq1HCF/side-lamb-ragout-with-fried-onion-carrot-tomato-sauce-greens-vegetable-salad-table.jpg"
@@ -35,15 +41,75 @@ const Banner = () => {
           />
           <div className="lg:absolute top-[200px] left-[350px] ">
             <h1 className="text-5xl text-rose-500 font-extrabold">
-            Komodo National Park <br /> <span>In Indonesia</span>
+            Connect. Conserve. Care.
             </h1>
             <p className="text-xl lg:w-[500px] mx-auto font-semibold text-yellow-200 mt-3">
-            Komodo National Park in Indonesia is home to the iconic Komodo dragons and offers breathtaking landscapes of pristine beaches, crystal-clear waters, and rugged terrain.
+            Join us in creating a sustainable future by reducing food waste and sharing surplus with those in need. Together, we can make a significant impact on our community iss well-being.
             </p>
           </div>
         </SwiperSlide>
-        </Swiper>
-   </div>
+        <SwiperSlide>
+          <img
+            style={{ width: "100%", height: "90vh" }}
+            src="https://i.ibb.co/ypg23BC/adults-enjoying-mexican-food.jpg"
+            alt=""
+          />
+          <div className="lg:absolute top-[200px] left-[350px] ">
+            <h1 className="text-5xl text-rose-500 font-extrabold">
+            Connect. Conserve. Care.
+            </h1>
+            <p className="text-xl lg:w-[500px] mx-auto font-semibold text-yellow-200 mt-3">
+            Be a part of the solution to food waste by sharing surplus food with your community. Together, we can create a healthier and more sustainable world.
+            </p>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            style={{ width: "100%", height: "90vh" }}
+            src="https://i.ibb.co/5nP0K97/photorealistic-lohri-festival-celebration-with-traditional-food.jpg"
+            alt=""
+          />
+          <div className="lg:absolute top-[200px] left-[350px] ">
+            <h1 className="text-5xl text-rose-500 font-extrabold">
+            Connect. Conserve. Care.
+            </h1>
+            <p className="text-xl lg:w-[500px] mx-auto font-semibold text-yellow-200 mt-3">
+            Unite to fight food waste and support those in need. Share surplus food and make a difference in your community today.
+            </p>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            style={{ width: "100%", height: "90vh" }}
+            src="https://i.ibb.co/41Tb3KP/top-view-eid-al-fitr-celebration-with-delicious-food.jpg"
+            alt=""
+          />
+          <div className="lg:absolute top-[200px] left-[350px] ">
+            <h1 className="text-5xl text-rose-500 font-extrabold">
+            Connect. Conserve. Care.
+            </h1>
+            <p className="text-xl lg:w-[500px] mx-auto font-semibold text-yellow-200 mt-3">
+            Transform surplus into support by sharing food within your community. Let is work together to reduce waste and nourish those in need.
+            </p>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            style={{ width: "100%", height: "90vh" }}
+            src="https://i.ibb.co/KXNVMHv/top-view-table-full-food.jpg"
+            alt=""
+          />
+          <div className="lg:absolute top-[200px] left-[350px] ">
+            <h1 className="text-5xl text-rose-500 font-extrabold">
+            Connect. Conserve. Care.
+            </h1>
+            <p className="text-xl lg:w-[500px] mx-auto font-semibold text-yellow-200 mt-3">
+            Transform surplus into support by sharing food within your community. Let is work together to reduce waste and nourish those in need.
+            </p>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </div>
   );
 };
 

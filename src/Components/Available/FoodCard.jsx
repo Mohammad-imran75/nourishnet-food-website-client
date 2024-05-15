@@ -13,7 +13,7 @@ const FoodCard = ({ food }) => {
    
     <div>
       
-      <div className="flex flex-col p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
+      <div className="flex mt-6 flex-col p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
         <div className="flex space-x-4">
           <img
             alt=""
